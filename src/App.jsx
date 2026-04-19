@@ -18,7 +18,7 @@ export default function App() {
               <div className="flex items-baseline gap-2 whitespace-nowrap">
                 <span className="text-[22px] font-bold leading-none tracking-tight text-white sm:text-[30]">
                   GridSync </span>
-                <span className="text-[17px] font-medium leading-none tracking-tight text-white/92 sm:text-[23px]"><Solutions>
+                <span className="text-[17px] font-medium leading-none tracking-tight text-white/92 sm:text-[23px]">Solutions
                 </span>
               </div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(34,199,199,0.22),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(14,116,144,0.25),_transparent_30%)]" />
