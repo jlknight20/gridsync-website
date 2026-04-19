@@ -6,21 +6,24 @@ export default function App() {
           <a
             href="/"
             aria-label="Gridsync Solutions home"
-            className="flex min-w-0 items-center gap-4 rounded-lg outline-none transition-opacity hover:opacity-95 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"></a>
-          
+            className="flex min-w-0 items-center gap-4 rounded-lg outline-none transition-opacity hover:opacity-95 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950">
+          </a>
             <img
               src="/GridSync_logo_transparent.jpg"
               alt="GridSync Solutions logo"
-              className="h-14 w-14 shrink-0 object-contain sm:h-[72px] sm:w-[72px]"/>
+              className="h-14 w-14 shrink-0 object-contain sm:h-[72px] sm:w-[72px]"
+            />
             <div className="min-w-0">
               <div className="flex items-baseline gap-2 whitespace-nowrap">
                 <span className="text-[22px] font-bold leading-none tracking-tight text-white sm:text-[30]">
                   GridSync </span>
-                <span className="text-[17px] font-medium leading-none tracking-tight text-white/92 sm:text-[23px]">Solutions
+                <span className="text-[17px] font-medium leading-none tracking-tight text-white/92 sm:text-[23px]">
+                Solutions
                 </span>
               </div>
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(34,199,199,0.22),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(14,116,144,0.25),_transparent_30%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(34,199,199,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,199,199,0.08)_1px,transparent_1px)] bg-[size:48px_48px]" />
+            </div>
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6 py-6 lg:px-8">
