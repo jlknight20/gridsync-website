@@ -204,14 +204,6 @@ export default function App() {
                   <div className="text-slate-500">Email</div>
                   <div className="mt-1 text-base font-semibold text-cyan-300">joe.knight@gridsync-co.com</div>
                 </div>
-                <div>
-                  <div className="text-slate-500">Phone</div>
-                  <div className="mt-1 text-base font-semibold text-white">443-876-7244</div>
-                </div>
-                <div>
-                  <div className="text-slate-500">Website</div>
-                  <div className="mt-1 text-base font-semibold text-white">www.gridsync-co.com</div>
-                </div>
               </div>
               <div className="mt-8 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-5 text-sm leading-7 text-cyan-100">
                 External outage coordination for utility contractors, built to reduce bottlenecks and keep projects moving.
