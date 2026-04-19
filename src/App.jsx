@@ -204,7 +204,7 @@ export default function App() {
                   <div className="text-slate-500">Email</div>
                   <a
                     href="mailto:joe.knight@gridsync-co.com"
-                    className="mt-1 block text-base font-semibold text-cyan-300 hover:text-cyan-400 transition-colors duration-200">joe.knight@gridsync-co.com</div>
+                    className="mt-1 block text-base font-semibold text-cyan-300 hover:text-cyan-400 transition-colors duration-200">joe.knight@gridsync-co.com
                   </a>
                 </div>
                 <div>
