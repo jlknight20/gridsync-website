@@ -6,14 +6,12 @@ export default function App() {
           <a
             href="/"
             aria-label="Gridsync Solutions home"
-            className="flex min-w-0 items-center gap-4 rounded-lg outline-none transition-opacity hover:opacity-95 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-          >
+            className="flex min-w-0 items-center gap-4 rounded-lg outline-none transition-opacity hover:opacity-95 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"></a>
+          
             <img
               src="/GridSync_logo_transparent.jpg"
               alt="GridSync Solutions logo"
-              className="h-14 w-14 shrink-0 object-contain sm:h-[72px] sm:w-[72px]"
-            />
-
+              className="h-14 w-14 shrink-0 object-contain sm:h-[72px] sm:w-[72px]"/>
             <div className="min-w-0">
               <div className="flex items-baseline gap-2 whitespace-nowrap">
                 <span className="text-[22px] font-bold leading-none tracking-tight text-white sm:text-[30]">
@@ -93,7 +91,8 @@ export default function App() {
 
           <div className="lg:pl-6">
             <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-950/30 backdrop-blur">
-              <div className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">Why clients use us</div>
+              <div className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">Why clients use us
+              </div>
               <div className="mt-5 space-y-4">
                 {[
                   ["Longer outage approval timelines", "We help reduce delays before crews are ready to mobilize."],
