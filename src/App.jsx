@@ -9,7 +9,7 @@ export default function App() {
       className="flex min-w-0 items-center gap-4 rounded-lg outline-none transition-opacity hover:opacity-95 focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
     >
       <img
-        src="/GridSync_logo_transparent.jpg"
+        src="/GridSync_logo_transparent.png"
         alt="GridSync Solutions logo"
         className="h-14 w-14 shrink-0 object-contain sm:h-[72px] sm:w-[72px]"
       />
