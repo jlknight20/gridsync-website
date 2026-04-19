@@ -198,6 +198,13 @@ export default function App() {
               <div className="space-y-5 text-sm text-slate-300">
                 <div>
                   <div className="text-slate-500">Company</div>
+                  <a
+                  href="mailto:joe.knight@gridsync-co.com"
+                  className="mt-1 block text-base front-semibold text-cyan-300 hover:text-cyan-400 transition-colors duration-200"
+                  >
+                    joe.knight@gridsync-co.com
+                  </a>
+                </div>
                   <div className="mt-1 text-base font-semibold text-white">GridSync Solutions</div>
                 </div>
                 <div>
