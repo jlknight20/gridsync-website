@@ -202,7 +202,7 @@ export default function App() {
                 </div>
                 <div>
                   <div className="text-slate-500">Email</div>
-                  <div className="mt-1 text-base font-semibold text-cyan-300">joe.knight@gridsync-co.com</div>
+                  <div className="mt-1 text-base font-semibold text-cyan-300">Info@gridsync-co.com</div>
                 </div>
               </div>
               <div className="mt-8 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-5 text-sm leading-7 text-cyan-100">
