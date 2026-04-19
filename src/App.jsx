@@ -207,10 +207,6 @@ export default function App() {
                     className="mt-1 block text-base font-semibold text-cyan-300 hover:text-cyan-400 transition-colors duration-200">info@gridsync-co.com
                   </a>
                 </div>
-                <div>
-                  <div className="text-slate-500">Website</div>
-                  <div className="mt-1 text-base font-semibold text-white">www.gridsync-co.com</div>
-                </div>
               </div>
               <div className="mt-8 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-5 text-sm leading-7 text-cyan-100">
                 External outage coordination for utility contractors, built to reduce bottlenecks and keep projects moving.
