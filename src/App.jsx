@@ -46,8 +46,7 @@ export default function App() {
             </div>
           </a>
 
-          <a
-            href="#contact"
+          <a href="#contact"
             className="inline-flex min-h-[44px] shrink-0 items-center justify-center rounded-xl bg-slate-700 px-4 text-sm font-medium text-slate-100 transition-colors hover:bg-slate-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:px-5">
             <span className="hidden sm:inline">Schedule a Conversation</span>
             <span className="sm:hidden">Contact</span>
