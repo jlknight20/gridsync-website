@@ -61,12 +61,6 @@ export default function App() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
             </div>
-          <a
-            href="#contact"
-            className="rounded-xl border border-cyan-400/40 bg-cyan-400/10 px-4 py-2 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/20"
-          >
-            Schedule a Conversation
-          </a>
           </div>
         </div>
 
