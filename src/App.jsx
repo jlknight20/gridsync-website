@@ -52,6 +52,9 @@ export default function App() {
             <span className="hidden sm:inline">Schedule a Conversation</span>
             <span className="sm:hidden">Contact</span>
           </a>
+      
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(34,199,199,0.22),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(14,116,144,0.25),_transparent_30%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(rgba(34,199,199,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,199,199,0.08)_1px,transparent_1px)] bg-[size:48px_48px]" />
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6 py-6 lg:px-8">
