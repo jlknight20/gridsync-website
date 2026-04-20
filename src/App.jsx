@@ -218,7 +218,9 @@ export default function App() {
     </div>
   )
 }
-<section id="contact" className="relative overflow-hidden bg-slate-950 py-24 text-slate-100">
+{ 
+  ( 
+  <section id="contact" className="relative overflow-hidden bg-slate-950 py-24 text-slate-100">
   <div className="absolute inset-0 opacity-20">
     <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.10),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(14,116,144,0.12),_transparent_32%)]" />
   </div>
@@ -359,3 +361,5 @@ export default function App() {
     </div>
   </div>
 </section>
+  )
+}
