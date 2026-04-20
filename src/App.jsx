@@ -79,7 +79,6 @@ export default function App() {
               outage-heavy project environments.
             </p>
           </div>
-
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {[
               {
