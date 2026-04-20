@@ -60,14 +60,6 @@ export default function App() {
         <div className="relative mx-auto max-w-7xl px-6 py-6 lg:px-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div>
-                <div className="text-xl font-bold tracking-wide text-white">
-                  GridSync Solutions
-                </div>
-                <div className="text-sm text-cyan-300">
-                  Faster approvals. Fewer delays.
-                </div>
-              </div>
             </div>
           <a
             href="#contact"
