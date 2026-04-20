@@ -218,3 +218,144 @@ export default function App() {
     </div>
   )
 }
+<section id="contact" className="relative overflow-hidden bg-slate-950 py-24 text-slate-100">
+  <div className="absolute inset-0 opacity-20">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(34,211,238,0.10),_transparent_30%),radial-gradient(circle_at_bottom_right,_rgba(14,116,144,0.12),_transparent_32%)]" />
+  </div>
+
+  <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+    <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+      <div className="max-w-2xl">
+        <p className="text-xs font-semibold uppercase tracking-[0.28em] text-cyan-400">
+          Schedule a Conversation
+        </p>
+
+        <h2 className="mt-4 max-w-3xl text-4xl font-bold tracking-tight text-white sm:text-5xl">
+          Keep approvals moving and project delays under control.
+        </h2>
+
+        <p className="mt-6 max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
+          GridSync Solutions supports outage coordination, switching planning, and project
+          communication for teams that need faster decisions, fewer bottlenecks, and clearer
+          field-to-office alignment.
+        </p>
+
+        <div className="mt-10 grid gap-4 sm:grid-cols-2">
+          <div className="rounded-2xl border border-cyan-500/15 bg-slate-900/70 p-5">
+            <p className="text-sm font-medium text-white">Email</p>
+            <a
+              href="mailto:jlknight20@gmail.com"
+              className="mt-2 inline-block text-sm text-cyan-400 transition hover:text-cyan-300"
+            >
+              jlknight20@gmail.com
+            </a>
+          </div>
+
+          <div className="rounded-2xl border border-cyan-500/15 bg-slate-900/70 p-5">
+            <p className="text-sm font-medium text-white">Response Time</p>
+            <p className="mt-2 text-sm text-slate-300">Typically within 1 business day</p>
+          </div>
+        </div>
+
+        <div className="mt-8 rounded-2xl border border-white/10 bg-slate-900/60 p-6">
+          <p className="text-sm font-medium text-white">Best fit for</p>
+          <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
+            <li>Outage coordination support for active utility or contractor projects</li>
+            <li>Switching planning support for scheduled work and approvals</li>
+            <li>Project teams needing clearer communication and faster coordination</li>
+          </ul>
+        </div>
+      </div>
+
+      <div className="rounded-3xl border border-cyan-500/15 bg-slate-900/85 p-6 shadow-2xl shadow-black/20 sm:p-8">
+        <div className="border-b border-white/10 pb-5">
+          <h3 className="text-2xl font-semibold tracking-tight text-white">
+            Request Information
+          </h3>
+          <p className="mt-2 text-sm leading-6 text-slate-400">
+            Share a few details about your project and we’ll follow up with the right next step.
+          </p>
+        </div>
+
+        <form className="mt-6 space-y-4">
+          <div className="grid gap-4 sm:grid-cols-2">
+            <div>
+              <label htmlFor="name" className="mb-2 block text-sm font-medium text-slate-200">
+                Full Name
+              </label>
+              <input
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Your name"
+                className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20"
+              />
+            </div>
+
+            <div>
+              <label htmlFor="company" className="mb-2 block text-sm font-medium text-slate-200">
+                Company
+              </label>
+              <input
+                id="company"
+                name="company"
+                type="text"
+                placeholder="Company name"
+                className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label htmlFor="email" className="mb-2 block text-sm font-medium text-slate-200">
+              Email Address
+            </label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="you@example.com"
+              className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="service" className="mb-2 block text-sm font-medium text-slate-200">
+              Service Needed
+            </label>
+            <select
+              id="service"
+              name="service"
+              className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20"
+            >
+              <option>Outage Coordination</option>
+              <option>Switching Support</option>
+              <option>Project Planning</option>
+              <option>General Inquiry</option>
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="message" className="mb-2 block text-sm font-medium text-slate-200">
+              Project Details
+            </label>
+            <textarea
+              id="message"
+              name="message"
+              rows={5}
+              placeholder="Briefly describe the work, timeline, or coordination support you need."
+              className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20"
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="inline-flex w-full items-center justify-center rounded-xl bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300"
+          >
+            Schedule a Conversation
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
