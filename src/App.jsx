@@ -60,14 +60,6 @@ export default function App() {
         <div className="relative mx-auto max-w-7xl px-6 py-6 lg:px-8">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-400/30 bg-slate-900/70 shadow-lg shadow-cyan-500/10">
-                <img
-                  src="/gridsync_logo_full_header_ready_correct.png"
-                  alt="GridSync Solutions logo"
-                  className="h-10 w-10 object-contain"
-                />
-              </div>
-
               <div>
                 <div className="text-xl font-bold tracking-wide text-white">
                   GridSync Solutions
