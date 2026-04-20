@@ -1,22 +1,6 @@
-import { useState } from "react";
+import { useForm, ValidationError } from "@formspree/react";
 export default function App() {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  async function handleSubmit(e) {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setIsSuccess(false);
-    try {
-      // Replace this with your real submission logic
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-      setIsSuccess(true);
-      e.currentTarget.reset();
-    } catch (error) {
-      console.error("Form submit failed:", error);
-    } finally {
-      setIsSubmitting(false);
-    }
-  }
+  const [state, handleSubmit] = useForm("xkokzrvp");
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100">
       <header className="relative overflow-hidden border-b border-cyan-500/20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800">
@@ -380,6 +364,12 @@ export default function App() {
                 </div>
 
                 <form onSubmit={handleSubmit} className="mt-6 space-y-4">
+                  <input
+                    type="hidden"
+                    name="_subject"
+                    value="New GridSync website inquiry"
+                  />
+
                   <div className="grid gap-4 sm:grid-cols-2">
                     <div>
                       <label
@@ -392,6 +382,7 @@ export default function App() {
                         id="name"
                         name="name"
                         type="text"
+                        required
                         placeholder="Your name"
                         className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20"
                       />
@@ -425,9 +416,17 @@ export default function App() {
                       id="email"
                       name="email"
                       type="email"
+                      required
                       placeholder="you@example.com"
                       className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20"
                     />
+                    <div className="mt-2 text-sm text-rose-300">
+                      <ValidationError
+                        prefix="Email"
+                        field="email"
+                        errors={state.errors}
+                      />
+                    </div>
                   </div>
 
                   <div>
@@ -460,22 +459,30 @@ export default function App() {
                       id="message"
                       name="message"
                       rows={5}
+                      required
                       placeholder="Briefly describe the work, timeline, or coordination support you need."
                       className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-400/60 focus:ring-2 focus:ring-cyan-400/20"
                     />
+                    <div className="mt-2 text-sm text-rose-300">
+                      <ValidationError
+                        prefix="Message"
+                        field="message"
+                        errors={state.errors}
+                      />
+                    </div>
                   </div>
 
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={state.submitting}
                     className="inline-flex w-full items-center justify-center rounded-xl bg-cyan-400 px-5 py-3 text-sm font-semibold text-slate-950 transition hover:bg-cyan-300 disabled:cursor-not-allowed disabled:opacity-70"
                   >
-                    {isSubmitting
+                    {state.submitting
                       ? "Sending..."
                       : "Schedule a Conversation"}
                   </button>
 
-                  {isSuccess && (
+                  {state.succeeded && (
                     <div className="rounded-xl border border-cyan-400/20 bg-cyan-400/10 px-4 py-3 text-sm text-cyan-200">
                       Thank you. Your message was sent successfully. We’ll
                       follow up within 1 business day.
