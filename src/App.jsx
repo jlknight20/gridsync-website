@@ -38,41 +38,6 @@ export default function App() {
             </a>
           </div>
         </div>
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(34,199,199,0.22),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(14,116,144,0.25),_transparent_30%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(34,199,199,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,199,199,0.08)_1px,transparent_1px)] bg-[size:48px_48px]" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-6 py-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-400/30 bg-slate-900/70 shadow-lg shadow-cyan-500/10">
-                <img
-                  src="/gridsync_logo_full_header_ready.png"
-                  alt="GridSync Solutions logo"
-                  className="h-10 w-10 object-contain"
-                />
-              </div>
-
-              <div>
-                <div className="text-xl font-bold tracking-wide text-white">
-                  GridSync Solutions
-                </div>
-                <div className="text-sm text-cyan-300">
-                  Faster approvals. Fewer delays.
-                </div>
-              </div>
-            </div>
-
-            <a
-              href="#contact"
-              className="rounded-xl border border-cyan-400/40 bg-cyan-400/10 px-4 py-2 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/20"
-            >
-              Schedule a Conversation
-            </a>
-          </div>
-        </div>
-
         <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-20 pt-10 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:pb-28 lg:pt-16">
           <div className="max-w-3xl">
             <div className="mb-5 inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-sm font-medium text-cyan-200">
