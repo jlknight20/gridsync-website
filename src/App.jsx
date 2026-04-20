@@ -31,7 +31,7 @@ export default function App() {
             <div className="flex items-center gap-4">
               <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-400/30 bg-slate-900/70 shadow-lg shadow-cyan-500/10">
                 <img
-                  src="/gridsync_logo_full_header_ready.png"
+                  src="/gridsync_logo_full_header_ready_correct.png"
                   alt="GridSync Solutions logo"
                   className="h-10 w-10 object-contain"
                 />
