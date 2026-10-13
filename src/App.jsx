@@ -1,220 +1,129 @@
+import { useEffect, useRef, useState } from 'react'
+
+const navigation = [['Home', 'home'], ['Capabilities', 'capabilities'], ['About GridSync', 'about'], ['How We Work', 'how-we-work'], ['Contact', 'contact']]
+const capabilities = [
+  { title: 'Grid Modernization', intro: 'Supporting ADMS/OMS implementations that connect utility systems with operational needs.', items: ['ADMS/OMS implementation support and requirements validation', 'Switching management and control center workflows', 'Utility system integration coordination', 'Operator readiness and operational transition support'] },
+  { title: 'Utility Consulting', intro: 'Practical support for complex utility environments.', items: ['Distribution operations expertise', 'Process improvement and operational assessments', 'Training development', 'Project support'] },
+  { title: 'Outage Coordination', intro: 'Aligning outage plans and switching workflows with utility and contractor requirements.', items: ['Outage planning, scheduling, and revisions', 'TOA/ORCA coordination and switching management workflows', 'Switching-order development support', 'Utility-contractor coordination and schedule alignment'] },
+  { title: 'Specialized Field Services', intro: 'Building toward the next layer of infrastructure support.', developing: true, items: ['Overhead and underground electrical infrastructure', 'Cable services', 'Electrical testing and diagnostics', 'Fault location and repair'] },
+]
+
 export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
+  const headerRef = useRef(null)
+
+  useEffect(() => {
+    const header = headerRef.current
+    const sections = navigation.map(([, id]) => document.getElementById(id))
+    let frame = 0
+    const update = () => {
+      frame = 0
+      const height = header.getBoundingClientRect().height
+      document.documentElement.style.setProperty('--header-offset', `${height + 16}px`)
+      const threshold = height + 40
+      let current = 'home'
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= threshold) current = section.id
+      }
+      if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) current = 'contact'
+      setActiveSection(current)
+    }
+    const scheduleUpdate = () => {
+      if (!frame) frame = window.requestAnimationFrame(update)
+    }
+    const observer = new ResizeObserver(update)
+    observer.observe(header)
+    window.addEventListener('scroll', scheduleUpdate, { passive: true })
+    window.addEventListener('resize', scheduleUpdate)
+    update()
+    return () => {
+      observer.disconnect()
+      window.removeEventListener('scroll', scheduleUpdate)
+      window.removeEventListener('resize', scheduleUpdate)
+      window.cancelAnimationFrame(frame)
+      document.documentElement.style.removeProperty('--header-offset')
+    }
+  }, [])
+
+  const navigate = (event, id) => {
+    event.preventDefault()
+    setMenuOpen(false)
+    window.requestAnimationFrame(() => {
+      const section = document.getElementById(id)
+      const offset = headerRef.current.getBoundingClientRect().height + 16
+      const top = id === 'home' ? 0 : section.getBoundingClientRect().top + window.scrollY - offset
+      window.history.pushState(null, '', `#${id}`)
+      window.scrollTo({ top, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })
+    })
+  }
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100">
-      <header className="relative overflow-hidden border-b border-cyan-500/20 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800">
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(34,199,199,0.22),_transparent_35%),radial-gradient(circle_at_bottom_right,_rgba(14,116,144,0.25),_transparent_30%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(rgba(34,199,199,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(34,199,199,0.08)_1px,transparent_1px)] bg-[size:48px_48px]" />
-        </div>
-
-        <div className="relative mx-auto max-w-7xl px-6 py-6 lg:px-8">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-4">
-              <div className="flex h-14 w-14 items-center justify-center rounded-2xl border border-cyan-400/30 bg-slate-900/70 shadow-lg shadow-cyan-500/10">
-                <svg viewBox="0 0 100 100" className="h-10 w-10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="50" cy="50" r="45" stroke="url(#g)" strokeWidth="4" />
-                  <path d="M28 30 L24 58 M72 30 L76 58 M24 36 H40 M60 36 H76 M22 44 H42 M58 44 H78" stroke="url(#g)" strokeWidth="3" strokeLinecap="round"/>
-                  <path d="M30 30 L26 58 L34 58 L30 30Z" stroke="url(#g)" strokeWidth="3"/>
-                  <path d="M70 30 L66 58 L74 58 L70 30Z" stroke="url(#g)" strokeWidth="3"/>
-                  <path d="M16 58 C34 56 40 52 50 44 C60 52 66 56 84 58" stroke="url(#g)" strokeWidth="3" strokeLinecap="round"/>
-                  <path d="M22 68 C36 58 44 56 50 52 C56 56 64 58 78 68" stroke="url(#g)" strokeWidth="3" strokeLinecap="round"/>
-                  <path d="M28 76 C40 66 50 60 72 76" stroke="url(#g)" strokeWidth="3" strokeLinecap="round"/>
-                  <defs>
-                    <linearGradient id="g" x1="10" y1="10" x2="90" y2="90" gradientUnits="userSpaceOnUse">
-                      <stop stopColor="#22d3ee" />
-                      <stop offset="1" stopColor="#0f766e" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-              </div>
-              <div>
-                <div className="text-xl font-bold tracking-wide text-white">GridSync Solutions</div>
-                <div className="text-sm text-cyan-300">Faster approvals. Fewer delays.</div>
-              </div>
-            </div>
-            <a href="#contact" className="rounded-xl border border-cyan-400/40 bg-cyan-400/10 px-4 py-2 text-sm font-semibold text-cyan-200 transition hover:bg-cyan-400/20">
-              Schedule a Conversation
-            </a>
-          </div>
-        </div>
-
-        <div className="relative mx-auto grid max-w-7xl gap-12 px-6 pb-20 pt-10 lg:grid-cols-[1.2fr_0.8fr] lg:px-8 lg:pb-28 lg:pt-16">
-          <div className="max-w-3xl">
-            <div className="mb-5 inline-flex rounded-full border border-cyan-400/30 bg-cyan-400/10 px-4 py-2 text-sm font-medium text-cyan-200">
-              Outage Coordination Services | Switching Order Support | Utility Project Coordination
-            </div>
-            <h1 className="text-4xl font-black leading-tight text-white md:text-6xl">
-              Outage Coordination &amp; Switching Support for Utility Contractors
-            </h1>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300">
-              GridSync Solutions provides outage coordination services, switching order support, TOA / ORCA submission support,
-              and utility project coordination for contractors working in distribution and transmission environments. We help reduce
-              outage approval delays, revision cycles, and schedule bottlenecks so crews can stay productive and projects can keep moving.
-            </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a href="#services" className="rounded-2xl bg-cyan-400 px-6 py-3 text-center font-semibold text-slate-950 transition hover:bg-cyan-300">
-                View Services
-              </a>
-              <a href="#contact" className="rounded-2xl border border-slate-600 px-6 py-3 text-center font-semibold text-slate-100 transition hover:border-cyan-400 hover:text-cyan-200">
-                Request Information
-              </a>
-            </div>
-            <div className="mt-10 grid gap-4 sm:grid-cols-3">
-              {[
-                ["Outage Coordination", "Reduce approval bottlenecks before work starts."],
-                ["Switching Orders", "Support safe, aligned execution in the field."],
-                ["Utility Project Support", "Keep schedules moving across active programs."],
-              ].map(([title, text]) => (
-                <div key={title} className="rounded-2xl border border-slate-800 bg-slate-900/70 p-4 shadow-lg shadow-black/20">
-                  <div className="font-semibold text-white">{title}</div>
-                  <div className="mt-2 text-sm leading-6 text-slate-400">{text}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:pl-6">
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 shadow-2xl shadow-cyan-950/30 backdrop-blur">
-              <div className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">Why clients use us</div>
-              <div className="mt-5 space-y-4">
-                {[
-                  ["Longer outage approval timelines", "We help reduce delays before crews are ready to mobilize."],
-                  ["Too many revision cycles", "We tighten coordination and submissions to reduce back-and-forth."],
-                  ["Field teams waiting on outages", "We help align switching and planning with construction schedules."],
-                  ["Overloaded internal teams", "We take coordination work off PMs, foremen, and project teams."],
-                ].map(([title, text]) => (
-                  <div key={title} className="rounded-2xl border border-slate-800 bg-slate-950/70 p-4">
-                    <div className="font-semibold text-white">{title}</div>
-                    <div className="mt-1 text-sm leading-6 text-slate-400">{text}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+    <>
+      <a className="skip-link" href="#main">Skip to content</a>
+      <header className="site-header" ref={headerRef}>
+        <div className="container header-inner">
+          <a className="brand" href="#home" aria-label="GridSync Solutions LLC home" onClick={event => navigate(event, 'home')}>
+            <img src="/brand/gridsync-horizontal-original.svg" alt="GridSync Solutions — Integrate, Coordinate, Deliver" width="1280" height="770" />
+          </a>
+          <button className="menu-toggle" aria-expanded={menuOpen} aria-controls="navigation" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? 'Close' : 'Menu'} <span aria-hidden="true">{menuOpen ? '−' : '+'}</span></button>
+          <nav id="navigation" aria-label="Main navigation" className={menuOpen ? 'navigation is-open' : 'navigation'}>
+            {navigation.map(([label, id]) => <a key={id} href={`#${id}`} aria-current={activeSection === id ? 'location' : undefined} onClick={event => navigate(event, id)}>{label}</a>)}
+          </nav>
         </div>
       </header>
-
-      <main>
-        <section id="services" className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-          <div className="max-w-3xl">
-            <div className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">Services</div>
-            <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">Utility outage coordination services built to reduce delays and keep projects on schedule.</h2>
-            <p className="mt-4 text-lg leading-8 text-slate-400">
-              We support the coordination layer behind utility construction so outage planning, switching orders, TOA / ORCA submissions,
-              and project schedules do not become the hidden bottleneck. Our services are designed for utility contractors supporting
-              distribution and transmission work across active programs and outage-heavy project environments.
-            </p>
+      <main id="main">
+        <section id="home" className="hero">
+          <div className="container hero-layout">
+            <div className="hero-copy">
+              <p className="eyebrow"><span className="small-rule" /> GRIDSYNC SOLUTIONS LLC</p>
+              <h1>Utility Expertise.<br /><span>Integrated Solutions.</span></h1>
+              <p className="hero-description">Supporting electric utilities and infrastructure contractors through grid modernization, operational consulting, outage coordination, and specialized field services.</p>
+              <a className="button" href="#capabilities">Explore our capabilities <span className="arrow" aria-hidden="true" /></a>
+              <p className="hero-note">Utility consulting &amp; specialized field services</p>
+            </div>
+            <div className="hero-art" aria-hidden="true">
+              <div className="art-top"><span>CONNECTED EXPERTISE</span><span>GS / 01</span></div>
+              <div className="logo-stage"><img src="/brand/gridsync-horizontal-original.svg" alt="" width="1280" height="770" /></div>
+              <div className="art-bottom"><span>INTEGRATE</span><span>COORDINATE</span><span>DELIVER</span></div>
+            </div>
           </div>
-
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {[
-              {
-                title: "Outage Writing & TOA / ORCA Submittals",
-                items: ["TOA / ORCA submissions", "Initial outage write-ups", "Revision handling", "Utility-specific coordination support"],
-              },
-              {
-                title: "Switching Order Development",
-                items: ["Switching draft support", "Execution alignment", "Sequence review", "Safety-focused coordination"],
-              },
-              {
-                title: "Program-Level Support",
-                items: ["Weekly outage planning", "Schedule alignment", "Conflict visibility", "Project support across multiple active jobs"],
-              },
-            ].map((card) => (
-              <div key={card.title} className="rounded-3xl border border-slate-800 bg-slate-900 p-7 shadow-lg shadow-black/20">
-                <div className="text-xl font-bold text-white">{card.title}</div>
-                <ul className="mt-5 space-y-3 text-sm leading-6 text-slate-400">
-                  {card.items.map((item) => (
-                    <li key={item} className="flex items-start gap-3">
-                      <span className="mt-2 h-2 w-2 rounded-full bg-cyan-400" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="container audience"><span>Supporting the grid ecosystem</span><div>Electric utilities <span aria-hidden="true">/</span> Infrastructure contractors <span aria-hidden="true">/</span> Grid technology organizations</div></div>
+        </section>
+        <section id="capabilities" className="section container">
+          <span id="services" className="legacy-anchor" aria-hidden="true" />
+          <div className="section-heading"><div><p className="eyebrow">01 / CAPABILITIES</p><h2>Expertise across<br />a changing grid.</h2></div><p>From operational systems to project coordination, GridSync connects utility knowledge with practical support.</p></div>
+          <div className="capability-grid">
+            {capabilities.map((capability, index) => <article className={`capability${capability.developing ? ' developing' : ''}`} key={capability.title}>
+              <div className="card-top"><span className="card-number">0{index + 1}</span>{capability.developing && <span className="status">Developing capability</span>}</div>
+              <h3>{capability.title}</h3><p>{capability.intro}</p>
+              <ul>{capability.items.map(item => <li key={item}>{item}</li>)}</ul>
+              {capability.developing && <p className="availability">GridSync is expanding toward these services. They are areas of development and are not all currently available. Contact us to confirm scope and availability.</p>}
+            </article>)}
           </div>
         </section>
-
-        <section className="border-y border-slate-800 bg-slate-900/60">
-          <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-            <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr]">
-              <div>
-                <div className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">How it works</div>
-                <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">A utility outage planning process built to reduce delays, revisions, and schedule risk.</h2>
-                <p className="mt-4 text-lg leading-8 text-slate-400">
-                  We integrate into your workflow, support your outage pipeline, and help keep outage approvals, switching coordination,
-                  utility submissions, and construction schedules moving. This process is built for contractors handling utility work in
-                  distribution and transmission systems where delays in coordination can quickly impact project execution.
-                </p>
-              </div>
-              <div className="grid gap-4">
-                {[
-                  "1. Scope intake and project review",
-                  "2. GIS / feeder validation and coordination prep",
-                  "3. Outage write-up and switching support",
-                  "4. Submission, revisions, and utility follow-through",
-                  "5. Schedule alignment so work is ready when outages are approved",
-                ].map((step) => (
-                  <div key={step} className="rounded-2xl border border-slate-800 bg-slate-950/70 px-5 py-4 text-base text-slate-200">
-                    {step}
-                  </div>
-                ))}
-              </div>
+        <section id="about" className="about section">
+          <div className="container about-layout">
+            <div><p className="eyebrow">02 / ABOUT GRIDSYNC</p><h2>Utility Experience.<br />Integrated Solutions.</h2></div>
+            <div className="about-copy">
+              <p className="large-copy">GridSync Solutions LLC is a utility consulting and specialized infrastructure services company supporting electric utilities, infrastructure contractors, and grid technology organizations.</p>
+              <p>Built on extensive experience across electric distribution operations, overhead and underground infrastructure, utility field supervision, and grid modernization initiatives, GridSync brings practical industry knowledge to complex operational and project challenges.</p>
+              <p>Our expertise bridges the gap between field operations, control center environments, utility technology, and project execution. We understand how these areas connect and work to align technical requirements, operational priorities, and project objectives.</p>
+              <p>Through a growing portfolio of consulting, coordination, and specialized field-service capabilities, GridSync is positioned to support the evolving needs of the electric utility industry.</p>
+              <div className="tagline">INTEGRATE • COORDINATE • DELIVER</div>
             </div>
           </div>
         </section>
-
-        <section className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-          <div className="grid gap-8 lg:grid-cols-3">
-            {[
-              ["Built for contractors", "Designed around the pressure PMs, foremen, and project teams face when outages start stacking up."],
-              ["Focused on execution", "We support the work behind the work so construction schedules are not waiting on coordination."],
-              ["Structured to scale", "Start with overflow support or build toward ongoing coordination across active projects."],
-            ].map(([title, text]) => (
-              <div key={title} className="rounded-3xl border border-slate-800 bg-slate-900 p-7">
-                <div className="text-xl font-bold text-white">{title}</div>
-                <p className="mt-3 text-sm leading-7 text-slate-400">{text}</p>
-              </div>
-            ))}
-          </div>
+        <section id="how-we-work" className="section container">
+          <div className="section-heading"><div><p className="eyebrow">03 / HOW WE WORK</p><h2>Aligned from the start.</h2></div><p>A practical approach shaped around your operational environment, project needs, and team.</p></div>
+          <div className="process-grid">{[
+            ['Integrate', 'Understand the context.', 'Review the scope, operational requirements, and existing workflows to define where support fits.'],
+            ['Coordinate', 'Connect the moving parts.', 'Align stakeholders, system requirements, outage plans, and project schedules around a shared scope.'],
+            ['Deliver', 'Support the work ahead.', 'Provide agreed consulting and coordination support, with clear documentation and communication.'],
+          ].map(([title, subtitle, text], index) => <article className="process" key={title}><div className="process-top"><span>0{index + 1}</span><span aria-hidden="true">→</span></div><h3>{title}</h3><h4>{subtitle}</h4><p>{text}</p></article>)}</div>
         </section>
+        <section id="contact" className="contact section"><div className="container contact-layout"><div><p className="eyebrow">04 / CONTACT</p><h2>Connect with GridSync.</h2><p>For capability information, project support inquiries, or questions about developing field services, contact GridSync Solutions LLC.</p></div><div className="contact-details"><span className="contact-label">EMAIL</span><a href="mailto:info@gridsync-co.com">Info@gridsync-co.com <span className="arrow" aria-hidden="true" /></a><p>Share your project context and the support you’re looking for.</p></div></div></section>
       </main>
-
-      <section id="contact" className="border-t border-cyan-500/20 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-900">
-        <div className="mx-auto max-w-7xl px-6 py-20 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr]">
-            <div>
-              <div className="text-sm font-semibold uppercase tracking-[0.25em] text-cyan-300">Contact GridSync Solutions</div>
-              <h2 className="mt-3 text-3xl font-bold text-white md:text-4xl">Talk with an outage coordination partner built for utility contractors.</h2>
-              <p className="mt-4 max-w-2xl text-lg leading-8 text-slate-400">
-                If your team is dealing with outage approval delays, switching order bottlenecks, TOA / ORCA workload, or coordination gaps
-                across utility projects, GridSync Solutions can help support your process. We work with contractors that need reliable outage
-                coordination support to keep distribution and transmission work moving.
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-8 shadow-2xl shadow-black/20">
-              <div className="space-y-5 text-sm text-slate-300">
-                <div>
-                  <div className="text-slate-500">Company</div>
-                  <div className="mt-1 text-base font-semibold text-white">GridSync Solutions</div>
-                </div>
-                <div>
-                  <a 
-                    href="mailto:info@gridsync-co.com">
-                  <div className="text-slate-500">Email</div>
-                  <div className="mt-1 text-base font-semibold text-cyan-300">Info@gridsync-co.com</div>
-                  </a>
-                </div>
-              </div>
-              <div className="mt-8 rounded-2xl border border-cyan-400/20 bg-cyan-400/10 p-5 text-sm leading-7 text-cyan-100">
-                External outage coordination for utility contractors, built to reduce bottlenecks and keep projects moving.
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+      <footer><div className="container footer-inner"><span>© {new Date().getFullYear()} GridSync Solutions LLC</span><span>INTEGRATE • COORDINATE • DELIVER</span><a href="#home">Back to top</a></div></footer>
+    </>
   )
 }
