@@ -19,3 +19,7 @@
 .arrow{display:inline-block;width:10px;height:10px;border-top:1.5px solid currentColor;border-right:1.5px solid currentColor;position:relative;flex-shrink:0}.arrow:after{content:"";position:absolute;width:13px;height:1.5px;background:currentColor;right:-2px;top:4px;transform:rotate(-45deg)}
 
 html{scroll-padding-top:var(--header-offset,247px)}.legacy-anchor{scroll-margin-top:0}.about-copy>p+p{margin-top:20px}
+
+/* Keep capability headings and step labels free of stray vertical markers. */
+.capability h3,.process-top,.process-top>span:first-child{border-left:0;box-shadow:none;caret-color:transparent}
+.capability h3::before,.process-top::before,.process-top>span:first-child::before{content:none}
