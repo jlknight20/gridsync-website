@@ -18,6 +18,8 @@ No deployment is required for review.
 Development branch: `dev/gridsync-brand-refresh`.
 
 - Home, Capabilities, About GridSync, How We Work, and Contact sections.
+- Company-focused About copy supplied by the owner; no personal biography.
+- ADMS/OMS, switching workflows, readiness, system integration, and utility-contractor coordination emphasized in capabilities.
 - Four capabilities; specialized field services explicitly marked as developing,
   with a scope and availability notice.
 - Existing `info@gridsync-co.com` email retained; existing `#services` links
@@ -34,7 +36,9 @@ Development branch: `dev/gridsync-brand-refresh`.
   empty space at favicon sizes. Paths, gradients, colors, and proportions are
   unchanged. The untouched original is also retained.
 - System fonts for website text; no Bank Gothic or Nexa font files or purchases.
-- Mobile navigation, keyboard focus, skip link, and reduced-motion support.
+- Mobile navigation, section-aware highlighting with aria-current, keyboard focus, skip link, and reduced-motion support.
+- Slightly enlarged official header logo and opaque white sticky header.
+- Anchor offsets follow the actual header height on desktop and mobile.
 
 ## Validation
 
@@ -44,6 +48,8 @@ Development branch: `dev/gridsync-brand-refresh`.
 - Logos load, four capability cards render, and field-service notice is visible.
 - Mobile menu opens and closes after choosing a section.
 - Section navigation, original email target, and Network-G favicon work.
+- Active navigation follows clicked sections and manual scrolling; headings remain below the sticky header at every checked width.
+- Sticky header remains at the top with an opaque white background.
 - Reduced-motion preference disables smooth scrolling.
 - No JavaScript console/page errors or HTTP errors during the checks.
 
@@ -57,6 +63,8 @@ that may be listed as available in a future update; none have been asserted as
 currently available in this refresh. No invented phone number, address, clients,
 certifications, licenses, achievements, or company history were added.
 
-This development branch has not been pushed, merged, or deployed. Check hosting
-integrations before pushing if automatic preview deployments are enabled.
-Production publication requires explicit approval.
+This development branch is pushed for review in draft PR #1:
+https://github.com/jlknight20/gridsync-website/pull/1
+
+The owner authorized branch pushes and Vercel Preview deployments. No merge or
+production deployment is authorized. Production publication requires explicit approval.
